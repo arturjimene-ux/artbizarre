@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ArtBizarre — Arte Urbano & Vestimenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --text: #111111;
+      --text-muted: #777777;
+      --border: rgba(0,0,0,0.12);
+      --red: #B51904;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+    .logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-outline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover, .btn-outline.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 85vh;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-left {
+      padding: 5rem 3rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tag::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 9vw, 110px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+    h1 em { font-style: normal; color: var(--red); }
+
+    .subtext {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 14px 28px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .hero-right {
+      position: relative;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-art { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      display: flex;
+      gap: 2rem;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* MANIFESTO */
+    .manifesto {
+      padding: 5rem 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .manifesto-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.1;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+    .manifesto-quote em { font-style: normal; color: var(--red); }
+    .manifesto-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* CATALOG */
+    .catalog { padding: 5rem 2rem; }
+
+    .catalog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 2px;
+    }
+
+    .filter-group { display: flex; gap: 1rem; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+    }
+
+    .card {
+      background: var(--bg);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover .card-overlay { opacity: 1; }
+    .card:hover .card-img { transform: scale(1.03); }
+
+    .card-img-wrap {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-img {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s ease;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .overlay-btn {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 10px 20px;
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .card-info {
+      padding: 1rem 1.25rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .card-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .card-cat {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .card-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+    .card-price span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0;
+    }
+
+    /* FEATURED */
+    .featured {
+      padding: 5rem 2rem;
+      background: var(--bg-secondary);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: white;
+      background: var(--red);
+      display: inline-block;
+      padding: 6px 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .footer-copy { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Art<span>B</span>izarre</div>
+    <ul class="nav-links">
+      <li><a href="#catalogo" onclick="setTimeout(()=>filterItems(document.querySelector('.btn-outline:nth-child(2)'), 'arte'), 100)">Arte</a></li>
+      <li><a href="ropa.html">Ropa</a></li>
+      <li><a href="#">Ediciones</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+    <button class="btn-outline" onclick="window.location.href='registro.html'">Contacto</button>
+  </nav>
+
+  <div style="padding: 1rem 2rem 0;">
+    <img src="logo-ab.png" alt="ArtBizarre Logo" style="width: 120px; display: block;">
+  </div>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="tag">Arte urbano — Vestimenta — Cultura</div>
+      <h1>La calle<br>como<br><em>lienzo</em></h1>
+      <p class="subtext">Arte urbano y ropa que nace en las paredes, vive en la piel. Piezas únicas que llevan la energía del grafiti a tu guardarropa.</p>
+      <button class="btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
+        Ver catálogo
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="btn-primary" onclick="window.location.href='registro.html'" style="margin-top:1rem;">
+        Pre-registro
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="hero-right">
+      <div class="hero-art">
+        <svg viewBox="0 0 480 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;max-height:85vh;">
+          <rect width="480" height="600" fill="#1a1a1a"/>
+          <text x="150" y="200" font-family="'Bebas Neue', serif" font-size="180" fill="#C0392B" opacity="0.15" letter-spacing="2">ART</text>
+          <text x="150" y="510" font-family="'Bebas Neue', serif" font-size="180" fill="#ffffff" opacity="0.08" letter-spacing="2">BIZ</text>
+          <line x1="40" y1="60" x2="440" y2="60" stroke="#C0392B" stroke-width="2"/>
+          <line x1="40" y1="520" x2="440" y2="520" stroke="#C0392B" stroke-width="2"/>
+          <text x="240" y="290" font-family="'Bebas Neue', serif" font-size="72" fill="white" text-anchor="middle" letter-spacing="4">BIZARRE</text>
+          <text x="240" y="340" font-family="'Bebas Neue', serif" font-size="28" fill="#C0392B" text-anchor="middle" letter-spacing="8">ARTE • ROPA</text>
+          <rect x="160" y="360" width="160" height="1.5" fill="#C0392B"/>
+          <text x="240" y="390" font-family="sans-serif" font-size="11" fill="#888" text-anchor="middle" letter-spacing="3">TEMPORADA 2026</text>
+          <circle cx="60" cy="540" r="4" fill="#C0392B"/>
+          <circle cx="240" cy="540" r="4" fill="#C0392B"/>
+          <circle cx="420" cy="540" r="4" fill="#C0392B"/>
+        </svg>
+      </div>
+      <div class="hero-stats" style="position:absolute; bottom:2rem; left:2rem; display:flex; gap:2rem; z-index:10;">
+        <div><div class="stat-num">5+</div><div class="stat-label">Piezas únicas</div></div>
+        
+        <div><div class="stat-num">5</div><div class="stat-label">Artistas</div></div>
+        <div><div class="stat-num">1°</div><div class="stat-label">Temporada</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto">
+    <p class="manifesto-quote">Arte que no pide <em>permiso</em></p>
+    <p class="manifesto-sub">Cada pieza en ArtBizarre es una declaración. Trabajamos con artistas urbanos para llevar su lenguaje visual a objetos que puedes vestir y colgar.</p>
+  </section>
+
+  <section class="catalog" id="catalogo">
+    <div class="catalog-header">
+      <h2 class="section-title">Catálogo</h2>
+      <div class="filter-group">
+        <button class="btn-outline active" onclick="filterItems(this,'todos')">Todos</button>
+        <button class="btn-outline" onclick="filterItems(this,'arte')">Arte</button>
+        <button class="btn-outline" onclick="filterItems(this,'ropa')">Ropa</button>
+      </div>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+      <div class="card" data-cat="arte">
+        <div class="card-img-wrap">
+          <svg class="card-img" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#111"/>
+            <text x="20" y="150" font-family="'Bebas Neue',serif" font-size="120" fill="#C0392B" opacity="0.6">X</text>
+            <text x="60" y="260" font-family="'Bebas Neue',serif" font-size="120" fill="white" opacity="0.15">01</text>
+            <rect x="20" y="20" width="80" height="3" fill="#C0392B"/>
+            <text x="20" y="50" font-family="sans-serif" font-size="10" fill="#888" letter-spacing="3">ORIGINAL</text>
+          </svg>
+        </div>
+        <div class="card-overlay"><button class="overlay-btn">Ver pieza</button></div>
+        <div class="card-info">
+          <div class="card-cat">Arte original</div>
+          <div class="card-name">Sin título No.01</div>
+          <div class="card-price">$4,200 <span>MXN</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="ropa">
+        <div class="card-img-wrap">
+          <svg class="card-img" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#f5f0e8"/>
+            <rect x="80" y="60" width="140" height="180" rx="4" fill="#e8e0d0"/>
+            <polygon points="80,60 150,30 220,60" fill="#d4c9b8"/>
+            <rect x="60" y="60" width="30" height="80" rx="4" fill="#d4c9b8"/>
+            <rect x="210" y="60" width="30" height="80" rx="4" fill="#d4c9b8"/>
+            <text x="150" y="170" font-family="'Bebas Neue',serif" font-size="32" fill="#C0392B" text-anchor="middle" letter-spacing="2">BIZAR</text>
+            <rect x="100" y="180" width="100" height="2" fill="#C0392B"/>
+            <rect x="80" y="240" width="140" height="120" rx="2" fill="#1a1a1a"/>
+            <text x="150" y="320" font-family="'Bebas Neue',serif" font-size="18" fill="white" text-anchor="middle" letter-spacing="3">CREW</text>
+          </svg>
+        </div>
+        <div class="card-overlay"><button class="overlay-btn">Ver pieza</button></div>
+        <div class="card-info">
+          <div class="card-cat">Ropa</div>
+          <div class="card-name">Hoodie Bizar Crew</div>
+          <div class="card-price">$980 <span>MXN</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="arte">
+        <div class="card-img-wrap">
+          <svg class="card-img" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#0d0d0d"/>
+            <circle cx="150" cy="180" r="100" fill="none" stroke="#C0392B" stroke-width="1.5"/>
+            <circle cx="150" cy="180" r="70" fill="none" stroke="#555" stroke-width="0.5"/>
+            <circle cx="150" cy="180" r="40" fill="#C0392B" opacity="0.8"/>
+            <text x="150" y="188" font-family="'Bebas Neue',serif" font-size="20" fill="white" text-anchor="middle" letter-spacing="3">VOID</text>
+            <line x1="50" y1="310" x2="250" y2="310" stroke="#333" stroke-width="0.5"/>
+            <text x="150" y="340" font-family="sans-serif" font-size="10" fill="#555" text-anchor="middle" letter-spacing="2">EDICIÓN LIMITADA</text>
+          </svg>
+        </div>
+        <div class="card-overlay"><button class="overlay-btn">Ver pieza</button></div>
+        <div class="card-info">
+          <div class="card-cat">Arte — edición limitada</div>
+          <div class="card-name">Void Series — Rojo</div>
+          <div class="card-price">$6,500 <span>MXN</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="ropa">
+        <div class="card-img-wrap">
+          <svg class="card-img" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#1a1a1a"/>
+            <rect x="75" y="100" width="150" height="200" rx="2" fill="#222"/>
+            <rect x="75" y="100" width="150" height="50" rx="2" fill="#111"/>
+            <text x="150" y="135" font-family="'Bebas Neue',serif" font-size="28" fill="#C0392B" text-anchor="middle" letter-spacing="3">AB</text>
+            <rect x="90" y="165" width="120" height="1" fill="#333"/>
+            <text x="150" y="200" font-family="sans-serif" font-size="9" fill="#666" text-anchor="middle" letter-spacing="2">ARTBIZARRE</text>
+            <text x="150" y="220" font-family="sans-serif" font-size="9" fill="#555" text-anchor="middle" letter-spacing="2">URBAN CULTURE</text>
+            <rect x="100" y="240" width="100" height="40" rx="2" fill="#C0392B" opacity="0.15"/>
+            <text x="150" y="265" font-family="'Bebas Neue',serif" font-size="16" fill="#C0392B" text-anchor="middle">2026</text>
+          </svg>
+        </div>
+        <div class="card-overlay"><button class="overlay-btn">Ver pieza</button></div>
+        <div class="card-info">
+          <div class="card-cat">Ropa</div>
+          <div class="card-name">Tee AB Urban 2026</div>
+          <div class="card-price">$650 <span>MXN</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="arte">
+        <div class="card-img-wrap">
+          <svg class="card-img" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#f0ebe2"/>
+            <text x="-10" y="220" font-family="'Bebas Neue',serif" font-size="200" fill="#ddd" opacity="0.6">B</text>
+            <rect x="40" y="60" width="220" height="280" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+            <rect x="50" y="70" width="200" height="260" fill="none" stroke="#C0392B" stroke-width="0.5"/>
+            <text x="150" y="230" font-family="'Bebas Neue',serif" font-size="52" fill="#1a1a1a" text-anchor="middle" letter-spacing="2">STREET</text>
+            <text x="150" y="270" font-family="'Bebas Neue',serif" font-size="52" fill="#C0392B" text-anchor="middle" letter-spacing="2">CODE</text>
+          </svg>
+        </div>
+        <div class="card-overlay"><button class="overlay-btn">Ver pieza</button></div>
+        <div class="card-info">
+          <div class="card-cat">Arte original</div>
+          <div class="card-name">Street Code — Serigrafía</div>
+          <div class="card-price">$3,100 <span>MXN</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="ropa">
+        <div class="card-img-wrap">
+          <svg class="card-img" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#f8f4ee"/>
+            <ellipse cx="150" cy="290" rx="70" ry="10" fill="#ddd" opacity="0.5"/>
+            <rect x="100" y="120" width="100" height="170" rx="50" fill="#1a1a1a"/>
+            <rect x="100" y="120" width="100" height="50" rx="25" fill="#111"/>
+            <line x1="150" y1="120" x2="150" y2="90" stroke="#888" stroke-width="2"/>
+            <circle cx="150" cy="88" r="6" fill="#555"/>
+            <rect x="115" y="200" width="70" height="2" fill="#C0392B"/>
+            <text x="150" y="230" font-family="'Bebas Neue',serif" font-size="14" fill="white" text-anchor="middle" letter-spacing="3">BIZAR</text>
+          </svg>
+        </div>
+        <div class="card-overlay"><button class="overlay-btn">Ver pieza</button></div>
+        <div class="card-info">
+          <div class="card-cat">Ropa — accesorios</div>
+          <div class="card-name">Gorra Logo Bizar</div>
+          <div class="card-price">$420 <span>MXN</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="featured">
+    <div>
+      <svg viewBox="0 0 440 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:0.5px solid rgba(0,0,0,0.12);">
+        <rect width="440" height="500" fill="#0d0d0d"/>
+        <text x="220" y="280" font-family="'Bebas Neue',serif" font-size="260" fill="#C0392B" opacity="0.12" text-anchor="middle">AB</text>
+        <rect x="40" y="40" width="360" height="420" fill="none" stroke="#333" stroke-width="0.5"/>
+        <text x="220" y="220" font-family="'Bebas Neue',serif" font-size="80" fill="white" text-anchor="middle" letter-spacing="4">DROP</text>
+        <text x="220" y="290" font-family="'Bebas Neue',serif" font-size="80" fill="#C0392B" text-anchor="middle" letter-spacing="4">001</text>
+        <rect x="120" y="310" width="200" height="1.5" fill="#C0392B"/>
+        <text x="220" y="350" font-family="sans-serif" font-size="11" fill="#666" text-anchor="middle" letter-spacing="3">COLECCIÓN INAUGURAL</text>
+        <text x="220" y="375" font-family="sans-serif" font-size="11" fill="#444" text-anchor="middle" letter-spacing="2">30 PIEZAS — PRIMAVERA 2026</text>
+      </svg>
+    </div>
+    <div>
+      <div class="badge">Colección destacada</div>
+      <h2 class="section-title">Drop 001 —<br>Primavera 2026</h2>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin:1.5rem 0 2rem;">Nuestra primera colección inaugural. 30 piezas de arte y ropa en colaboración con artistas de Ciudad de México, Guadalajara y Monterrey. Arte que se agota.</p>
+      <div style="display:flex;gap:2rem;margin-bottom:2.5rem;">
+        <div><div class="stat-num" style="font-size:36px;">30</div><div class="stat-label">Piezas totales</div></div>
+        <div><div class="stat-num" style="font-size:36px;">8</div><div class="stat-label">Artistas</div></div>
+        <div><div class="stat-num" style="font-size:36px;">3</div><div class="stat-label">Ciudades</div></div>
+      </div>
+      <button class="btn-primary" onclick="window.location.href='./drop001.html'">
+        Ver colección completa
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <div style="background:#111111; padding: 5rem 0; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden; border-top: 0.5px solid rgba(255,255,255,0.08);">
+    <!-- Líneas rojas onduladas decorativas -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 Q200,40 400,90 Q600,140 800,70 Q1000,10 1200,80 Q1350,130 1440,60" fill="none" stroke="#CC2200" stroke-width="1.5" opacity="0.8"/>
+      <path d="M0,140 Q200,100 400,150 Q600,200 800,130 Q1000,70 1200,140 Q1350,190 1440,120" fill="none" stroke="#CC2200" stroke-width="1.5" opacity="0.8"/>
+      <path d="M0,200 Q200,160 400,210 Q600,260 800,190 Q1000,130 1200,200 Q1350,250 1440,180" fill="none" stroke="#CC2200" stroke-width="1" opacity="0.5"/>
+    </svg>
+    <!-- Logo centrado encima -->
+    <img src="logo-ab2.svg" alt="ArtBizarre" style="width:480px; display:block; position:relative; z-index:1;">
+  </div>
+
+  <footer>
+    <div class="footer-logo">Art<span style="color:var(--red)">B</span>izarre</div>
+    <div class="footer-copy">© 2026 ArtBizarre — Arte urbano y vestimenta</div>
+    <div class="footer-links">
+      <a href="#">IG</a>
+      <a href="#">WA</a>
+      <a href="#">TK</a>
+    </div>
+  </footer>
+
+  <script>
+    function filterItems(btn, cat) {
+      document.querySelectorAll('.btn-outline').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.card').forEach(card => {
+        card.style.display = (cat === 'todos' || card.dataset.cat === cat) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
