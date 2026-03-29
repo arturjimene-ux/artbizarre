@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ropa — ArtBizarre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #111111;
+      --bg-secondary: #1a1a1a;
+      --text: #ffffff;
+      --text-muted: #888888;
+      --border: rgba(255,255,255,0.1);
+      --red: #B51904;
+      --bg-light: #ffffff;
+      --text-dark: #111111;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 700;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    .btn-outline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    .btn-outline:hover, .btn-outline.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 5rem 2rem;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 2px;
+      background: var(--red);
+      margin: 0 auto 2rem;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 10px 18px;
+      border: 0.5px solid var(--text-muted);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    .hero-btn:hover {
+      border-color: var(--text);
+    }
+
+    /* LOOKBOOK SECTION */
+    .lookbook {
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 2px;
+      margin-bottom: 3rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ropa-card {
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card-image {
+      position: relative;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      color: var(--text);
+      opacity: 0.15;
+      letter-spacing: 2px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .badge-name {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .prenda-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .color-selector {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .color-option {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .color-option.active {
+      border-color: var(--red);
+    }
+
+    .card-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--red);
+      border: none;
+      color: var(--text);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: opacity 0.2s;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.8;
+    }
+
+    .card-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    /* EXPLICACIÓN SECTION */
+    .explicacion {
+      background: var(--bg-light);
+      padding: 5rem 2rem;
+      color: var(--text-dark);
+      border-top: 0.5px solid rgba(0,0,0,0.12);
+    }
+
+    .explicacion .section-title {
+      color: var(--text-dark);
+    }
+
+    .explicacion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .explicacion-item {
+      text-align: center;
+    }
+
+    .item-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .item-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .item-description {
+      font-size: 14px;
+      color: #777777;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+      font-weight: 700;
+    }
+    .footer-copy { 
+      font-size: 12px; 
+      color: var(--text-muted); 
+      letter-spacing: 1px;
+      font-weight: 700; 
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .footer-links a:hover { color: var(--red); }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .explicacion-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Art<span>B</span>izarre</div>
+    <ul class="nav-links">
+      <li><a href="./artbizarre_landing (n).html">Arte</a></li>
+      <li><a href="ropa.html" class="active">Ropa</a></li>
+      <li><a href="./artbizarre_landing (n).html">Ediciones</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+    <button class="btn-outline" onclick="window.location.href='./contacto.html'">Contacto</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-tag">Drop 001 — Ropa</div>
+    <h1 class="hero-title">La obra en tu piel</h1>
+    <p class="hero-subtitle">Prendas con obras originales de ArtBizarre. Si quieres la obra original, visita el Drop 001.</p>
+    <div class="hero-line"></div>
+    <button class="hero-btn" onclick="window.location.href='./drop001.html'">Ver Obras Originales →</button>
+  </section>
+
+  <!-- LOOKBOOK SECTION -->
+  <section class="lookbook">
+    <h2 class="section-title">Colección Completa</h2>
+    
+    <div class="product-grid">
+      <!-- Card 1: Obra 1 + Hoodie -->
+      <div class="ropa-card">
+        <div class="card-image">
+          <div class="image-text">Sin título No.01</div>
+        </div>
+        <div class="card-content">
+          <div class="badge-name">Sin título No.01</div>
+          <h3 class="prenda-name">Hoodie</h3>
+          
+          <div class="color-selector">
+            <button class="color-option active" style="background-color:#1a1a1a;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#f5f5f5;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#888888;" onclick="selectColor(this)"></button>
+          </div>
+          
+          <div class="card-price">$980 MXN</div>
+          <button class="btn-primary" onclick="window.location.href='registro.html'">Pre-Registro</button>
+          
+          <p class="card-note">Envío a todo México · 7-10 días hábiles</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Obra 2 + Playera -->
+      <div class="ropa-card">
+        <div class="card-image">
+          <div class="image-text">Sin título No.02</div>
+        </div>
+        <div class="card-content">
+          <div class="badge-name">Sin título No.02</div>
+          <h3 class="prenda-name">Playera</h3>
+          
+          <div class="color-selector">
+            <button class="color-option active" style="background-color:#1a1a1a;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#f5f5f5;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#888888;" onclick="selectColor(this)"></button>
+          </div>
+          
+          <div class="card-price">$650 MXN</div>
+          <button class="btn-primary" onclick="window.location.href='registro.html'">Pre-Registro</button>
+          
+          <p class="card-note">Envío a todo México · 7-10 días hábiles</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Obra 3 + Hoodie -->
+      <div class="ropa-card">
+        <div class="card-image">
+          <div class="image-text">Sin título No.03</div>
+        </div>
+        <div class="card-content">
+          <div class="badge-name">Sin título No.03</div>
+          <h3 class="prenda-name">Hoodie</h3>
+          
+          <div class="color-selector">
+            <button class="color-option active" style="background-color:#1a1a1a;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#f5f5f5;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#888888;" onclick="selectColor(this)"></button>
+          </div>
+          
+          <div class="card-price">$980 MXN</div>
+          <button class="btn-primary" onclick="window.location.href='registro.html'">Pre-Registro</button>
+          
+          <p class="card-note">Envío a todo México · 7-10 días hábiles</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Obra 4 + Playera -->
+      <div class="ropa-card">
+        <div class="card-image">
+          <div class="image-text">Edición Especial</div>
+        </div>
+        <div class="card-content">
+          <div class="badge-name">Edición Especial</div>
+          <h3 class="prenda-name">Playera</h3>
+          
+          <div class="color-selector">
+            <button class="color-option active" style="background-color:#1a1a1a;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#f5f5f5;" onclick="selectColor(this)"></button>
+            <button class="color-option" style="background-color:#888888;" onclick="selectColor(this)"></button>
+          </div>
+          
+          <div class="card-price">$650 MXN</div>
+          <button class="btn-primary" onclick="window.location.href='registro.html'">Pre-Registro</button>
+          
+          <p class="card-note">Envío a todo México · 7-10 días hábiles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLICACIÓN SECTION -->
+  <section class="explicacion">
+    <h2 class="section-title">¿Cómo funciona?</h2>
+    
+    <div class="explicacion-grid">
+      <div class="explicacion-item">
+        <div class="item-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" stroke="#B51904" stroke-width="1.5"/>
+            <path d="M30 15V45M15 30H45" stroke="#B51904" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="30" cy="20" r="3" fill="#B51904"/>
+          </svg>
+        </div>
+        <h3 class="item-title">Elige la obra</h3>
+        <p class="item-description">La que más conecte contigo. Cada una es única y cuenta una historia diferente.</p>
+      </div>
+      
+      <div class="explicacion-item">
+        <div class="item-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="40" height="30" rx="2" stroke="#B51904" stroke-width="1.5"/>
+            <line x1="15" y1="20" x2="45" y2="20" stroke="#B51904" stroke-width="1"/>
+            <line x1="15" y1="25" x2="45" y2="25" stroke="#B51904" stroke-width="1"/>
+            <circle cx="20" cy="35" r="3" fill="#B51904"/>
+            <circle cx="30" cy="35" r="3" fill="#B51904"/>
+            <circle cx="40" cy="35" r="3" fill="#B51904"/>
+          </svg>
+        </div>
+        <h3 class="item-title">Elige tu prenda</h3>
+        <p class="item-description">Hoodie o playera en el color que prefieras. Comodidad y estilo en una sola pieza.</p>
+      </div>
+      
+      <div class="explicacion-item">
+        <div class="item-icon">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 10L42 18V45H18V18L30 10Z" stroke="#B51904" stroke-width="1.5"/>
+            <path d="M25 35H35M25 40H35" stroke="#B51904" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="30" cy="25" r="2" fill="#B51904"/>
+          </svg>
+        </div>
+        <h3 class="item-title">¿Quieres el original?</h3>
+        <p class="item-description">Visita el Drop 001 y adquiere la obra física. Irrepetible y auténtica.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Art<span style="color:var(--red);">B</span>izarre</div>
+    <div class="footer-copy">© 2026 ArtBizarre — Drop 001 — Primavera 2026</div>
+    <div class="footer-links">
+      <a href="#">IG</a>
+      <a href="#">WA</a>
+      <a href="#">TK</a>
+    </div>
+  </footer>
+
+  <script>
+    function selectColor(btn) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

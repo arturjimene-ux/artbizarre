@@ -1,0 +1,47 @@
+<svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+
+  <rect x="140" y="20" width="400" height="300" rx="4" fill="#111111" style="fill:rgb(17, 17, 17);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="140" y="20" width="400" height="5" fill="#CC2200" style="fill:rgb(204, 34, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!--
+    CONCEPTO: La B está hecha con el mismo lenguaje geométrico de la A (triángulos/rombos).
+    La A tiene forma de pirámide. La B se construye con DOS pirámides apuntando a la derecha,
+    espejadas y apiladas, compartiendo la columna vertical central (en rojo) con la A.
+
+    La pata derecha de la A = columna izquierda de la B.
+    Las jorobas de la B son triángulos geométricos apuntando a la derecha, igual que
+    las patas de la A pero horizontales — mismo ADN visual.
+  -->
+
+  <!-- Centro X de todo el monograma -->
+  <!-- A ocupa aprox x: 170..320, columna compartida 300..330, B ocupa 300..500 -->
+
+  <!-- LETRA A -->
+  <!-- Pata izquierda -->
+  <polygon points="178,228  214,228  294,72  258,72" fill="#FFFFFF" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Travesaño -->
+  <rect x="196" y="158" width="98" height="16" fill="#FFFFFF" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Pata derecha = columna compartida, ROJA -->
+  <polygon points="258,72  294,72  330,228  294,228" fill="#CC2200" style="fill:rgb(204, 34, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- LETRA B — jorobas triangulares, mismo lenguaje que la A -->
+  <!-- Joroba superior: triángulo apuntando derecha -->
+  <!-- base izquierda en x=294, pico en x=460, entre y=72 y y=152 -->
+  <polygon points="294,72  330,72  460,112  330,152  294,152" fill="#FFFFFF" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Hueco interior joroba superior -->
+  <polygon points="316,86  330,86  422,112  330,138  316,138" fill="#111111" style="fill:rgb(17, 17, 17);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Joroba inferior: triángulo más grande -->
+  <polygon points="294,152  330,152  490,190  330,228  294,228" fill="#FFFFFF" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Hueco interior joroba inferior -->
+  <polygon points="316,164  330,164  434,190  330,216  316,216" fill="#111111" style="fill:rgb(17, 17, 17);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Nombre -->
+  <text x="340" y="272" font-family="'Arial', 'Helvetica Neue', sans-serif" font-weight="700" font-size="15" fill="#FFFFFF" letter-spacing="6" text-anchor="middle" dominant-baseline="central" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Arial, &quot;Helvetica Neue&quot;, sans-serif;font-size:15px;font-weight:700;text-anchor:middle;dominant-baseline:central">ARTBIZARRE</text>
+
+  <line x1="156" y1="272" x2="205" y2="272" stroke="#CC2200" stroke-width="1.5" style="fill:rgb(0, 0, 0);stroke:rgb(204, 34, 0);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <line x1="475" y1="272" x2="524" y2="272" stroke="#CC2200" stroke-width="1.5" style="fill:rgb(0, 0, 0);stroke:rgb(204, 34, 0);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <text x="340" y="298" font-family="'Arial', 'Helvetica Neue', sans-serif" font-weight="400" font-size="10" fill="#888888" letter-spacing="3" text-anchor="middle" dominant-baseline="central" style="fill:rgb(136, 136, 136);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Arial, &quot;Helvetica Neue&quot;, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:central">ARTE · ROPA · CULTURA</text>
+
+</svg>

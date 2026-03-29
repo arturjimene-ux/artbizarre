@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pre-Registro — ArtBizarre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --text: #111111;
+      --text-muted: #777777;
+      --border: rgba(0,0,0,0.12);
+      --red: #B51904;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+    .logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-outline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover, .btn-outline.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 35vh;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 10vw, 100px);
+      line-height: 1;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 2px;
+      background: var(--red);
+      margin: 0 auto;
+    }
+
+    /* FORM SECTION */
+    .form-section {
+      padding: 4rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .form-input,
+    .form-textarea {
+      padding: 12px 14px;
+      border: 0.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 14px 28px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      align-self: center;
+      margin-top: 0.5rem;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .footer-copy { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+      .form-section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Art<span>B</span>izarre</div>
+    <ul class="nav-links">
+      <li><a href="#catalogo" onclick="setTimeout(()=>filterItems(document.querySelector('.btn-outline:nth-child(2)'), 'arte'), 100)">Arte</a></li>
+      <li><a href="#catalogo" onclick="setTimeout(()=>filterItems(document.querySelector('.btn-outline:nth-child(3)'), 'ropa'), 100)">Ropa</a></li>
+      <li><a href="./artbizarre_landing (n).html">Ediciones</a></li>
+      <li><a href="./artbizarre_landing (n).html">Nosotros</a></li>
+    </ul>
+    <button class="btn-outline" onclick="window.location.href='./contacto.html'">Contacto</button>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-title">PRE-REGISTRO</h1>
+    <div class="hero-line"></div>
+  </section>
+
+  <section class="form-section">
+    <form method="POST" action="https://formspree.io/f/mvzvkkpd" class="form-container">
+
+      <div class="form-group">
+        <label class="form-label">Nombre completo</label>
+        <input type="text" name="nombre" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Correo electrónico</label>
+        <input type="email" name="correo" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Teléfono / WhatsApp</label>
+        <input type="tel" name="telefono" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Ciudad</label>
+        <input type="text" name="ciudad" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">¿Qué pieza te interesa?</label>
+        <textarea name="pieza" class="form-textarea" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Enviar pre-registro
+      </button>
+
+      <p class="form-note">Nos pondremos en contacto contigo en menos de 48 horas.</p>
+
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Art<span style="color:var(--red)">B</span>izarre</div>
+    <div class="footer-copy">© 2026 ArtBizarre — Arte urbano y vestimenta</div>
+    <div class="footer-links">
+      <a href="#">IG</a>
+      <a href="#">WA</a>
+      <a href="#">TK</a>
+    </div>
+  </footer>
+
+</body>
+</html>

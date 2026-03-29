@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto — ArtBizarre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --text: #111111;
+      --text-muted: #777777;
+      --border: rgba(0,0,0,0.12);
+      --red: #B51904;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+    .logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-outline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover, .btn-outline.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 40vh;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: 1;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 2px;
+      background: var(--red);
+      margin: 0 auto;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .block-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      color: var(--text);
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      padding: 1rem;
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+    }
+    .social-item:hover {
+      border-color: var(--red);
+      background: var(--bg-secondary);
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .social-text .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+    .social-text .handle {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .email-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .email-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      padding: 1.5rem;
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+    }
+    .email-item:hover {
+      border-color: var(--red);
+      background: var(--bg-secondary);
+    }
+
+    .email-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .email-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .email-text .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .email-text .address {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--red);
+      word-break: break-all;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .footer-copy { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Art<span>B</span>izarre</div>
+    <ul class="nav-links">
+      <li><a href="./artbizarre_landing (n).html">Arte</a></li>
+      <li><a href="./artbizarre_landing (n).html">Ropa</a></li>
+      <li><a href="./artbizarre_landing (n).html">Ediciones</a></li>
+      <li><a href="./artbizarre_landing (n).html">Nosotros</a></li>
+    </ul>
+    <button class="btn-outline active">Contacto</button>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-title">CONTACTO</h1>
+    <div class="hero-line"></div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-grid">
+
+      <!-- BLOQUE IZQUIERDO: REDES SOCIALES -->
+      <div class="contact-block">
+        <h2 class="block-title">Redes Sociales</h2>
+        <div class="social-links">
+
+          <a href="https://instagram.com" target="_blank" class="social-item">
+            <div class="social-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect x="2" y="2" width="28" height="28" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <circle cx="23" cy="9" r="1.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="social-text">
+              <span class="label">Instagram</span>
+              <span class="handle">@artbizarre</span>
+            </div>
+          </a>
+
+          <a href="https://tiktok.com" target="_blank" class="social-item">
+            <div class="social-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M20 2C20 2 22.5 6 22.5 12C22.5 16 19.5 19 16 19C13 19 10.5 16.5 10.5 13.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M15 19V30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M11 21C10 19.5 8 19 6 20C4 21 3 23 3 25C3 28 5 30 7 30C9 30 10.5 28.5 11 27" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="social-text">
+              <span class="label">TikTok</span>
+              <span class="handle">@artbizarre</span>
+            </div>
+          </a>
+
+          <a href="https://wa.me/5551234567" target="_blank" class="social-item">
+            <div class="social-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M26 6C24.3 4.3 22 3 19.5 3C13.5 3 8.5 8 8.5 14C8.5 16.2 9.1 18.3 10.3 20L3 29L9.2 25.7C10.4 26.8 12 27.5 13.7 27.5H14C20 27.5 25 22.5 25 16.5C25 14 24.3 11.3 23 9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.5 15.5L11.5 17.5L14 18" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="social-text">
+              <span class="label">WhatsApp</span>
+              <span class="handle">+55 (51) 98765-4321</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- BLOQUE DERECHO: EMAIL -->
+      <div class="contact-block">
+        <h2 class="block-title">Email</h2>
+        <div class="email-block">
+
+          <a href="mailto:hola@artbizarre.com" class="email-item">
+            <div class="email-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="3" y="6" width="34" height="28" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M3 6L20 18L37 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="email-text">
+              <span class="label">Correo electrónico</span>
+              <span class="address">hola@artbizarre.com</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Art<span style="color:var(--red)">B</span>izarre</div>
+    <div class="footer-copy">© 2026 ArtBizarre — Arte urbano y vestimenta</div>
+    <div class="footer-links">
+      <a href="#">IG</a>
+      <a href="#">WA</a>
+      <a href="#">TK</a>
+    </div>
+  </footer>
+
+</body>
+</html>

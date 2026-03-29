@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosotros — ArtBizarre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-dark: #111111;
+      --text: #111111;
+      --text-muted: #777777;
+      --text-light: #ffffff;
+      --border: rgba(0,0,0,0.12);
+      --red: #B51904;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+    .logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); font-weight: 500; }
+
+    .btn-outline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover, .btn-outline.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: var(--bg-dark);
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 2rem;
+    }
+
+    .hero-bg-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 400px;
+      font-weight: 700;
+      color: var(--text-light);
+      opacity: 0.04;
+      z-index: 1;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--red);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .hero-tag::before, .hero-tag::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 2px;
+      background: var(--red);
+      margin: 0 auto 2rem;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* MANIFESTO SECTION */
+    .manifesto {
+      background: var(--bg);
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifesto-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px;
+      font-weight: 700;
+      color: var(--text);
+      opacity: 0.03;
+      z-index: 1;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .manifesto-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-light);
+      background: var(--red);
+      display: inline-block;
+      padding: 6px 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    .manifesto-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      letter-spacing: 2px;
+      margin-bottom: 3rem;
+    }
+
+    .manifesto-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .manifesto-block {
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--red);
+    }
+    .manifesto-block:last-child {
+      border-bottom: none;
+    }
+
+    .block-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .block-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* PROCESO SECTION */
+    .proceso {
+      background: var(--bg-dark);
+      padding: 6rem 2rem;
+      color: var(--text-light);
+    }
+
+    .proceso-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .proceso-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .proceso-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .paso-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--red);
+    }
+
+    .step-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .step-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .step-description {
+      font-size: 14px;
+      color: #999999;
+      line-height: 1.6;
+    }
+
+    /* CIERRE SECTION */
+    .cierre {
+      background: var(--bg);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .cierre-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      letter-spacing: 2px;
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
+    }
+
+    .cierre-text em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 14px 28px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .footer-copy { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 48px; }
+      .manifesto-title { font-size: 36px; }
+      .proceso-grid { grid-template-columns: 1fr; }
+      .cierre-text { font-size: 32px; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Art<span>B</span>izarre</div>
+    <ul class="nav-links">
+      <li><a href="./artbizarre_landing (n).html">Arte</a></li>
+      <li><a href="ropa.html">Ropa</a></li>
+      <li><a href="./artbizarre_landing (n).html">Ediciones</a></li>
+      <li><a href="nosotros.html" class="active">Nosotros</a></li>
+    </ul>
+    <button class="btn-outline" onclick="window.location.href='./contacto.html'">Contacto</button>
+  </nav>
+
+  <!-- SECCIÓN 1: HERO -->
+  <section class="hero">
+    <div class="hero-bg-number">00</div>
+    <div class="hero-content">
+      <div class="hero-tag">Arte urbano — CDMX</div>
+      <h1 class="hero-title">Arte que no pide permiso</h1>
+      <div class="hero-line"></div>
+      <p class="hero-description">Somos un colectivo de artistas urbanos que busca llevar el lenguaje de la calle a objetos, espacios y experiencias. Cada pieza es una manifestación de nuestra visión del arte sin límites.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: MANIFIESTO -->
+  <section class="manifesto">
+    <div class="manifesto-bg-text">AB</div>
+    <div class="manifesto-content">
+      <div class="badge">MANIFIESTO</div>
+      <h2 class="manifesto-title">Lo que creemos</h2>
+      
+      <div class="manifesto-blocks">
+        <div class="manifesto-block">
+          <h3 class="block-title">Arte sin fronteras</h3>
+          <p class="block-text">El arte urbano no vive en las galerías. Vive en las paredes, en las calles, en los espacios donde la gente convive. Creemos que el arte debe ser accesible, provocador y auténtico.</p>
+        </div>
+        
+        <div class="manifesto-block">
+          <h3 class="block-title">Identidad visual única</h3>
+          <p class="block-text">Cada trazo, cada color, cada línea cuenta una historia. Nuestro trabajo es la fusión de técnicas tradicionales con conceptos contemporáneos, creando un lenguaje visual completamente nuestro.</p>
+        </div>
+        
+        <div class="manifesto-block">
+          <h3 class="block-title">Comunidad y colaboración</h3>
+          <p class="block-text">No trabajamos solos. Colaboramos con artistas, diseñadores y creadores de todo el país. Juntos construimos un movimiento que trasciende fronteras y categorías.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: PROCESO CREATIVO -->
+  <section class="proceso">
+    <h2 class="proceso-title">Cómo nace una pieza</h2>
+    
+    <div class="proceso-grid">
+      <div class="proceso-step">
+        <div class="paso-line"></div>
+        <div class="step-number">01</div>
+        <h3 class="step-title">Concepto</h3>
+        <p class="step-description">Exploramos temas, emociones y narrativas. Cada proyecto comienza con una pregunta: ¿qué queremos contar?</p>
+      </div>
+      
+      <div class="proceso-step">
+        <div class="paso-line"></div>
+        <div class="step-number">02</div>
+        <h3 class="step-title">Bocetaje</h3>
+        <p class="step-description">Experimentamos en papel. Trazos rápidos, iteraciones, descubrimiento visual. Aquí es donde la idea cobra forma.</p>
+      </div>
+      
+      <div class="proceso-step">
+        <div class="paso-line"></div>
+        <div class="step-number">03</div>
+        <h3 class="step-title">Ejecución</h3>
+        <p class="step-description">Pasamos a la técnica. Tinta, carbón, plumilla. Materiales que conocemos y dominamos con precisión.</p>
+      </div>
+      
+      <div class="proceso-step">
+        <div class="paso-line"></div>
+        <div class="step-number">04</div>
+        <h3 class="step-title">Pieza final</h3>
+        <p class="step-description">El resultado: una obra única, irrepetible, cargada de intención. Lista para vivir en el mundo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: CIERRE -->
+  <section class="cierre">
+    <h2 class="cierre-text">Cada línea que trazamos es un acto de <em>libertad</em></h2>
+    <button class="btn-primary" onclick="window.location.href='./drop001.html'">
+      Ver colección
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Art<span style="color:var(--red)">B</span>izarre</div>
+    <div class="footer-copy">© 2026 ArtBizarre — Arte urbano y vestimenta</div>
+    <div class="footer-links">
+      <a href="#">IG</a>
+      <a href="#">WA</a>
+      <a href="#">TK</a>
+    </div>
+  </footer>
+
+</body>
+</html>
