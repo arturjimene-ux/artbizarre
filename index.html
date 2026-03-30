@@ -347,6 +347,49 @@
       text-decoration: none;
     }
     .footer-links a:hover { color: var(--text); }
+
+.hamburger { display: none; }
+
+@media (max-width: 768px) {
+
+  /* NAVBAR HAMBURGUESA */
+  nav { padding: 1rem 1.25rem; position: relative; }
+  .nav-links { display: none; flex-direction: column; gap: 1.5rem; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); padding: 2rem 1.5rem; border-bottom: 0.5px solid var(--border); z-index: 200; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 14px; }
+  .btn-outline { display: none; }
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* HERO */
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 3rem 1.25rem 2rem; border-right: none; border-bottom: 0.5px solid var(--border); }
+  .hero-right { min-height: 60vw; }
+  h1 { font-size: clamp(48px, 14vw, 80px); }
+
+  /* MANIFESTO */
+  .manifesto { padding: 3rem 1.25rem; }
+  .manifesto-quote { font-size: clamp(28px, 8vw, 44px); }
+
+  /* CATÁLOGO */
+  .catalog { padding: 3rem 1rem; }
+  .catalog-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .filter-group { flex-wrap: wrap; gap: 0.5rem; }
+
+  /* FEATURED */
+  .featured { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+
+  /* FOOTER */
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 1.25rem; }
+
+  /* DROP001 ESPECÍFICO */
+  .hero-stats { gap: 1rem; }
+  .stat-num { font-size: 24px; }
+}
   </style>
 </head>
 <body>
@@ -360,6 +403,9 @@
       <li><a href="nosotros.html">Nosotros</a></li>
     </ul>
     <button class="btn-outline" onclick="window.location.href='contacto.html'">Contacto</button>
+    <button class="hamburger" id="hamburger" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div style="padding: 1rem 2rem 0;">
